@@ -43,7 +43,7 @@ class MainWindow:
         '''
 
         # 9am top point on the browser: 795,431
-        x1, y1, x2, y2 = 795,400,795, 900 #795, 431, 795, 900
+        x1, y1, x2, y2 = 795,400,795, 900 # home vals: 795, 431, 795, 900; work vals: 524,280,524,900
         canvas.create_line(x1, y1, x2, y2, width=1, fill="green")
         loop=False
         while loop:
