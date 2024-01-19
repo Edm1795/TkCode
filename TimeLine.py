@@ -18,7 +18,7 @@ class MainWindow:
         self.master.geometry("+150+500")  # position of the window in the screen (200x300)
         self.master.geometry("1000x400")  # set initial size of the root window (master) (1500x700);
         # if not set, the frames will fill the master window
-        # self.master.attributes('-fullscreen', True)
+        self.master.attributes('-fullscreen', True)
         screenWidth = self.master.winfo_screenwidth()
         screenHeight = self.master.winfo_screenheight()
         self.master.config(bg='white') # use this in conj with wm_atts below bg="#add123"
