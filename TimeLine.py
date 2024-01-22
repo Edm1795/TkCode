@@ -69,11 +69,12 @@ class MainWindow:
             return seconds / 60 # returns number of minutes elapsed
 
 
-        # 30 mins = how many pixels? --> 831-794 = 37
-        # 37 pixels / 30 = 1.2333 pixels per minute
+        # 30 mins = how many pixels? --> 831-794 = 37 (work com 554- 523 = 31)
+        # work com: 31 pix /30 = 1.033    home com: 37 pixels / 30 = 1.2333 pixels per minute
 
-        x1,x2 = (getTimeDiff() * 1.23) + 718, (getTimeDiff() * 1.23) + 718 # x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
-        y1=380
+        # home com: x1,x2 = (getTimeDiff() * 1.23) + 718, (getTimeDiff() * 1.23) + 718 # x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
+        x1, x2 = (getTimeDiff() * 1.0) + 523, (getTimeDiff() * 1.0) + 523  # x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
+        y1=336 # home com: y1=380
         y2=900
         # x1, y1, x2, y2 = 718,423,718, 900 # 8:00am top point: 718,423. # 9am top point: 795,431   795, 431, 795, 900
         # 9 am ? home vals: 795, 431, 795, 900; work vals: 524,280,524,900
