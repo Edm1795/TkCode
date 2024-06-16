@@ -74,7 +74,7 @@ class MainWindow:
         # 37 pixels / 30 = 1.2333 pixels per minute
 
         # 1.2333.. number of pixels horizontally per minute of time, move timeline 1.23 pixels every minute
-        x1,x2 = (getTimeDiff() * 1.24) + 718, (getTimeDiff() * 1.24) + 718 # x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
+        x1,x2 = (getTimeDiff() * 1.24) + 718, (getTimeDiff() * 1.24) + 718 # (Use 523 as 8 am start value, and 1.00 as pixel pur minute for w com.) x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
         y1=380
         y2=900
         # x1, y1, x2, y2 = 718,423,718, 900 # 8:00am top point: 718,423. # 9am top point: 795,431   795, 431, 795, 900
