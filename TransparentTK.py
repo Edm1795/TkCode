@@ -1,4 +1,4 @@
-
+# This makes a transparent window and any objects on the window as well, therefore the line will also be transparent
 from tkinter import *
 
 # Create object
