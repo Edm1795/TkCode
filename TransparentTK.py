@@ -16,7 +16,7 @@ y2=200
 
 canvas=Canvas(root)
 canvas.pack(pady=0,padx=0,fill=BOTH, expand=True)
-canvas.create_line(x1,y1,x2,y2,width='10',fill='green')
+canvas.create_line(x1,y1,x2,y2,width='10',fill='green') # Screen units are inputed as strings; pixels are inputed an numbers. Screen units are absolute distances such as mm or cm eg:10m is 10 mm.
 
 # Execute tkinter
 root.mainloop() # do not run this line if running this in a console realtime mode
