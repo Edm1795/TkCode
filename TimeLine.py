@@ -34,6 +34,10 @@ class MainWindow:
 
         self.timeLine(canvas)
 
+        # add button directly on to screen for closing the timeline
+        self.button = Button(canvas, text="Close Timeline", width=12, command=close)
+        self.button.pack()
+
 
 
 
@@ -110,3 +114,6 @@ def main():
     mainWin=MainWindow(root)
 
     root.mainloop()
+
+main()
+
