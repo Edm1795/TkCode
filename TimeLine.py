@@ -10,7 +10,14 @@ from ctypes import windll  # used for fixing blurry fonts on win 10 and 11 (also
 
 class MainWindow:
 
-    def __init__(self, master):
+    def __init__(self, master,lineColour,lineWidth):
+
+        '''
+
+        :param master:
+        :param lineColour: Colour of line of showing time on screen; sent in by calling function from TK main window and set in config file
+        :param lineWidth: Width of line of showing time on screen; sent in by calling function from TK main window and set in config file
+        '''
 
         # Master Window
         self.master = master
@@ -32,7 +39,7 @@ class MainWindow:
         #canvas.create_line(15, 0, 15, 500, width=5) # x,y x,y, dash=(10)
         canvas.pack(pady=0,padx=0,fill=BOTH, expand=True)
 
-        self.timeLine(canvas)
+        self.timeLine(canvas,lineColour,lineWidth) # draw the timeline on the screen according to values set from config file
 
         # add button directly on to screen for closing the timeline
         self.button = Button(canvas, text="Close Timeline", width=12, command=close)
@@ -42,11 +49,13 @@ class MainWindow:
 
 
 
-    def timeLine(self,canvas):
+    def timeLine(self,canvas,lineColour,lineWidth):
         '''
         Draws a line downwards at the correct current time on screen. This function has a helper function
         which calulates the time difference from 8 am to the current time of day
         inputs: the canvas
+        lineColour: Colour of line
+        lineWidth: width of line
         '''
 
         def getTimeDiff():
@@ -83,7 +92,7 @@ class MainWindow:
         y2=900
         # x1, y1, x2, y2 = 718,423,718, 900 # 8:00am top point: 718,423. # 9am top point: 795,431   795, 431, 795, 900
         # 9 am ? home vals: 795, 431, 795, 900; work vals: 524,280,524,900
-        canvas.create_line(x1, y1, x2, y2, width=1, fill="green") # draw a line at coordinates needed to display at correct time on schedule
+        canvas.create_line(x1, y1, x2, y2, width=lineWidth, fill=lineColour) # draw a line at coordinates needed to display at correct time on schedule
 
         # this loop can be used to draw a line, then erase that original line and draw a new line.
         # loop=False
@@ -107,11 +116,11 @@ class MainWindow:
 def close():
     root.destroy()
 
-def main():
+def main(lineColour,lineWidth):
     global root
     global mainWin
     root=Tk()
-    mainWin=MainWindow(root)
+    mainWin=MainWindow(root,lineColour,lineWidth)
 
     root.mainloop()
 
