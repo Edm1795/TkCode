@@ -10,7 +10,7 @@ from ctypes import windll  # used for fixing blurry fonts on win 10 and 11 (also
 
 class MainWindow:
 
-    def __init__(self, master,lineColour,lineWidth):
+    def __init__(self, master,lineColour,lineWidth,pixelsPerMinute,eightAMline):
 
         '''
 
@@ -39,7 +39,7 @@ class MainWindow:
         #canvas.create_line(15, 0, 15, 500, width=5) # x,y x,y, dash=(10)
         canvas.pack(pady=0,padx=0,fill=BOTH, expand=True)
 
-        self.timeLine(canvas,lineColour,lineWidth) # draw the timeline on the screen according to values set from config file
+        self.timeLine(canvas,lineColour,lineWidth,pixelsPerMinute,eightAMline) # draw the timeline on the screen according to values set from config file
 
         # add button directly on to screen for closing the timeline
         self.button = Button(canvas, text="Close Timeline", width=12, command=close)
@@ -49,7 +49,7 @@ class MainWindow:
 
 
 
-    def timeLine(self,canvas,lineColour,lineWidth):
+    def timeLine(self,canvas,lineColour,lineWidth,pixelsPerMinute,eightAMline):
         '''
         Draws a line downwards at the correct current time on screen. This function has a helper function
         which calulates the time difference from 8 am to the current time of day
@@ -87,7 +87,7 @@ class MainWindow:
         # 37 pixels / 30 = 1.2333 pixels per minute
 
         # 1.2333.. number of pixels horizontally per minute of time, move timeline 1.23 pixels every minute
-        x1,x2 = (getTimeDiff() * 1.24) + 718, (getTimeDiff() * 1.24) + 718 # (Use 523 as 8 am start value, and 1.00 as pixel pur minute for w com.) x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
+        x1,x2 = (getTimeDiff() * pixelsPerMinute) + eightAMline, (getTimeDiff() * pixelsPerMinute) + eightAMline # (Use 523 as 8 am start value, and 1.00 as pixel pur minute for w com.) x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
         y1=380
         y2=900
         # x1, y1, x2, y2 = 718,423,718, 900 # 8:00am top point: 718,423. # 9am top point: 795,431   795, 431, 795, 900
@@ -116,11 +116,11 @@ class MainWindow:
 def close():
     root.destroy()
 
-def main(lineColour,lineWidth):
+def main(lineColour,lineWidth,pixelsPerMinute,eightAMline):
     global root
     global mainWin
     root=Tk()
-    mainWin=MainWindow(root,lineColour,lineWidth)
+    mainWin=MainWindow(root,lineColour,lineWidth,pixelsPerMinute,eightAMline)
 
     root.mainloop()
 
