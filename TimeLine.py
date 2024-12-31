@@ -3,7 +3,7 @@
 import time
 from datetime import datetime
 from tkinter import *
-from ctypes import windll  # used for fixing blurry fonts on win 10 and 11 (also  windll.shcore.SetProcessDpiAwareness(1))
+from ctypes import windll# used for fixing blurry fonts on win 10 and 11 (also  windll.shcore.SetProcessDpiAwareness(1))
 #from tkinter import ttk
 
 
@@ -88,12 +88,17 @@ class MainWindow:
 
         # 1.2333.. number of pixels horizontally per minute of time, move timeline 1.23 pixels every minute
         x1,x2 = (getTimeDiff() * pixelsPerMinute) + eightAMline, (getTimeDiff() * pixelsPerMinute) + eightAMline # (Use 523 as 8 am start value, and 1.00 as pixel pur minute for w com.) x coords = num of minutes elapsed since 8 am * num of pixels per minute (1.23)
-        y1=380
+        y1=345
         y2=900
         # x1, y1, x2, y2 = 718,423,718, 900 # 8:00am top point: 718,423. # 9am top point: 795,431   795, 431, 795, 900
         # 9 am ? home vals: 795, 431, 795, 900; work vals: 524,280,524,900
         canvas.create_line(x1, y1, x2, y2, width=lineWidth, fill=lineColour) # draw a line at coordinates needed to display at correct time on schedule
-
+        canvas.update()
+        time.sleep(0.2)
+        canvas.create_line(x1, y1, x2, y2, width=lineWidth, fill="white")
+        root.update()
+        time.sleep(0.2)
+        canvas.create_line(x1, y1, x2, y2, width=lineWidth, fill=lineColour)
         # this loop can be used to draw a line, then erase that original line and draw a new line.
         # loop=False
         # while loop:
@@ -123,5 +128,4 @@ def main(lineColour,lineWidth,pixelsPerMinute,eightAMline):
     mainWin=MainWindow(root,lineColour,lineWidth,pixelsPerMinute,eightAMline)
 
     root.mainloop()
-
 
